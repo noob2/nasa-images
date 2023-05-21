@@ -10,20 +10,26 @@
         <v-list-item v-if="isLoggedIn">
           <ProfileSettings style="display: inline" />
         </v-list-item>
-        <v-list-item>
-          <GoogleLogin @click.stop />
-        </v-list-item>
+        <v-list-item> </v-list-item>
       </v-list>
+
+      <template v-slot:append>
+        <div class="pa-4">
+          <GoogleLogin @click.stop />
+        </div>
+      </template>
     </v-navigation-drawer>
   </div>
 
   <v-tabs color="green" align-tabs="center" class="responsive-tabs" centered>
+    <v-spacer />
     <v-tab v-for="(item, index) in menuItems" :key="index" :to="item.path">
       {{ item.label }}
     </v-tab>
     <v-tab v-if="isLoggedIn">
       <ProfileSettings />
     </v-tab>
+    <v-spacer />
     <v-tab>
       <GoogleLogin @click.stop />
     </v-tab>

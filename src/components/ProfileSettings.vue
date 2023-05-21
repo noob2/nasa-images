@@ -2,7 +2,7 @@
   <v-row justify="center">
     <v-dialog v-model="dialog" persistent width="1024">
       <template v-slot:activator="{ props }">
-        <v-btn color="primary" v-bind="props"> Profile Settings </v-btn>
+        <v-btn v-bind="props" prepend-icon="fa-user" variant="text"> Profile Settings </v-btn>
       </template>
       <v-card>
         <v-card-title>
