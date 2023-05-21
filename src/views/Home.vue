@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <v-card variant="outlined">
+    <v-card variant="outlined" max-width="600px" style="margin: 0 auto">
       <v-card-text
         >This app showcases the capabilities of Vue.js and demonstrates my skills as a developer. It utilizes various Vue.js features and best
         practices to provide a seamless user experience. The app allows users to explore captivating pictures of the day sourced from NASA's API. Upon

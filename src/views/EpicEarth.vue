@@ -1,5 +1,5 @@
 <template>
-  <v-card variant="outlined" class="ma-1" :loading="isLoading" min-height="20">
+  <v-card variant="outlined" :loading="isLoading" min-height="20">
     <div id="sliderContainer" class="ma-2">
       <v-slider v-model="selectedItem" :min="0" :max="avaiableImages.length - 1" :step="1" hide-details />
       <v-btn @click="togglePlay">
@@ -101,5 +101,11 @@ onUnmounted(() => {
 }
 #earthImage {
   width: 100%;
+  max-width: 850px;
+  max-height: 850px;
+  display: flex;
+  margin: 0 auto;
+  border-radius: 8px;
+  margin-bottom: 12px;
 }
 </style>

@@ -18,7 +18,7 @@
           <v-icon :color="picture.isLiked ? 'purple' : 'white'">fa-heart</v-icon>
         </v-btn>
       </h2>
-      <v-img :src="picture.url" :alt="picture.title" class="pa-2" />
+      <img :src="picture.url" :alt="picture.title" class="pa-2" style="max-width: 850px; max-height: 850px; display: 'inline-flex'" />
       <p>{{ picture.explanation }}</p>
     </v-card>
   </v-card>
