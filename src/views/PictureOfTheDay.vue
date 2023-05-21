@@ -12,7 +12,12 @@
       />
     </div>
     <v-card variant="outlined" v-if="!isLoading">
-      <h2>{{ picture.title }}</h2>
+      <h2>
+        {{ picture.title }}
+        <v-btn v-if="isLoggedIn" @click="addToFavorites">
+          <v-icon :color="picture.isLiked ? 'purple' : 'white'">fa-heart</v-icon>
+        </v-btn>
+      </h2>
       <v-img :src="picture.url" :alt="picture.title" class="pa-2" />
       <p>{{ picture.explanation }}</p>
     </v-card>
@@ -20,23 +25,29 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import axios from 'axios'
 
 import { useStore } from 'vuex'
 const store = useStore()
 const api_key = store.state.apiKey
 
+const isLoggedIn = computed(() => {
+  return store.state.isLoggedIn
+})
+
 interface Picture {
   url: string
   title: string
   explanation: string
+  isLiked: boolean
 }
 
 const picture = ref<Picture>({
   url: '',
   title: '',
-  explanation: ''
+  explanation: '',
+  isLiked: false
 })
 
 const isLoading = ref(true)
@@ -58,6 +69,11 @@ const fetchPictureOfTheDay = async () => {
   } finally {
     isLoading.value = false
   }
+}
+
+function addToFavorites() {
+  picture.value.isLiked = !picture.value.isLiked
+  store.dispatch('addToFavorites', picture.value)
 }
 
 onMounted(fetchPictureOfTheDay)

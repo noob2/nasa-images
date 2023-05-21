@@ -32,7 +32,7 @@ const selectedItem = ref<number>(-1)
 
 const earthImageUrl = ref('')
 const isLoading = ref(true)
-const avaiableImages = ref<ImageItem[]>([]) // Updated to hold ImageItem objects
+const avaiableImages = ref<ImageItem[]>([])
 
 const dayOfYear = ref<string>('')
 const API_URL = 'https://api.nasa.gov/EPIC/api/enhanced'
@@ -90,7 +90,6 @@ function togglePlay() {
   isPlaying.value = !isPlaying.value
 }
 
-// Clear the interval when the component is unmounted
 onUnmounted(() => {
   clearInterval(intervalId!)
 })
