@@ -12,11 +12,16 @@
       />
     </v-card>
 
-    <v-btn v-if="isLoggedIn" @click="signOut" color="error">Sign Out</v-btn>
+    <div v-if="isLoggedIn" style="display: contents">
+      <v-btn @click="signOut" color="error">Sign Out</v-btn>
+      <ProfileSettings style="display: contents" />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import ProfileSettings from './ProfileSettings.vue'
+
 import { computed } from 'vue'
 import { useStore } from 'vuex'
 
