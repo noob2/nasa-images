@@ -8,7 +8,7 @@
           <v-list-item-title>{{ item.label }}</v-list-item-title>
         </v-list-item>
         <v-list-item>
-          <GoogleLogin />
+          <GoogleLogin @click.stop />
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -19,7 +19,7 @@
       {{ item.label }}
     </v-tab>
     <v-tab>
-      <GoogleLogin />
+      <GoogleLogin @click.stop />
     </v-tab>
   </v-tabs>
 </template>

@@ -7,7 +7,7 @@
   </v-app>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import Navigation from '@/components/Navigation.vue'
 </script>
 
