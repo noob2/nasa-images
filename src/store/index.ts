@@ -37,6 +37,11 @@ const store = createStore<State>({
       //TODO: add to favorites table in DB
       commit('addToFavorites', value)
     }
+  },
+  getters: {
+    isImageInFavorites: (state: State) => (imageUrl: string) => {
+      return state.favorites.some((f: any) => f.url === imageUrl)
+    }
   }
 })
 

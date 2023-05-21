@@ -14,9 +14,7 @@
     </div>
     <h2>
       {{ picture.title }}
-      <v-btn v-if="isLoggedIn" @click="addToFavorites">
-        <v-icon :color="picture.isLiked ? 'purple' : 'white'">fa-heart</v-icon>
-      </v-btn>
+      <v-btn v-if="isLoggedIn" @click="addToFavorites" icon="fa-heart" :color="picture.isLiked ? 'purple' : 'white'" size="x-small" />
     </h2>
     <img :src="picture.url" :alt="picture.title" class="pa-2" style="max-width: 850px; max-height: 850px; display: 'inline-flex'" />
     <p>{{ picture.explanation }}</p>
@@ -63,6 +61,9 @@ const fetchPictureOfTheDay = async () => {
       params: { api_key, date: selectedDate.value }
     })
     picture.value = response.data
+
+    const isLiked = store.getters.isImageInFavorites(picture.value.url)
+    picture.value.isLiked = isLiked
   } catch (err) {
     error.value = 'Failed to fetch picture of the day.'
   } finally {
