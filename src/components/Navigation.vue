@@ -7,6 +7,9 @@
         <v-list-item v-for="(item, index) in menuItems" :key="index" :to="item.path">
           <v-list-item-title>{{ item.label }}</v-list-item-title>
         </v-list-item>
+        <v-list-item v-if="isLoggedIn">
+          <ProfileSettings style="display: inline" />
+        </v-list-item>
         <v-list-item>
           <GoogleLogin @click.stop />
         </v-list-item>
@@ -18,6 +21,9 @@
     <v-tab v-for="(item, index) in menuItems" :key="index" :to="item.path">
       {{ item.label }}
     </v-tab>
+    <v-tab v-if="isLoggedIn">
+      <ProfileSettings />
+    </v-tab>
     <v-tab>
       <GoogleLogin @click.stop />
     </v-tab>
@@ -25,9 +31,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onBeforeUnmount, computed } from 'vue'
+import { useStore } from 'vuex'
 import GoogleLogin from './GoogleLogin.vue'
+import ProfileSettings from './ProfileSettings.vue'
 
+const store = useStore()
 const showMenu = ref(true)
 const menuItems = [
   { label: 'Home', path: '/' },
@@ -35,6 +44,8 @@ const menuItems = [
   { label: 'Earth', path: '/earth' },
   { label: 'Epic Earth', path: '/epic-earth' }
 ]
+
+const isLoggedIn = computed(() => store.state.isLoggedIn) // Replace with your logic to check if the user is logged in
 
 function handleResize() {
   showMenu.value = window.innerWidth >= 600
