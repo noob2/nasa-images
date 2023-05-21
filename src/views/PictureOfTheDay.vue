@@ -1,5 +1,5 @@
 <template>
-  <v-card :loading="isLoading" class="pa-3 ma-1">
+  <v-card :loading="isLoading" class="pa-3 ma-1" variant="outlined">
     <div style="display: inline-block">
       <v-text-field
         label="Select day"
@@ -8,19 +8,18 @@
         variant="outlined"
         type="date"
         @change="fetchPictureOfTheDay"
-        class="date-picker"
+        style="width: 200px"
+        hide-details
       />
     </div>
-    <v-card variant="outlined" v-if="!isLoading">
-      <h2>
-        {{ picture.title }}
-        <v-btn v-if="isLoggedIn" @click="addToFavorites">
-          <v-icon :color="picture.isLiked ? 'purple' : 'white'">fa-heart</v-icon>
-        </v-btn>
-      </h2>
-      <img :src="picture.url" :alt="picture.title" class="pa-2" style="max-width: 850px; max-height: 850px; display: 'inline-flex'" />
-      <p>{{ picture.explanation }}</p>
-    </v-card>
+    <h2>
+      {{ picture.title }}
+      <v-btn v-if="isLoggedIn" @click="addToFavorites">
+        <v-icon :color="picture.isLiked ? 'purple' : 'white'">fa-heart</v-icon>
+      </v-btn>
+    </h2>
+    <img :src="picture.url" :alt="picture.title" class="pa-2" style="max-width: 850px; max-height: 850px; display: 'inline-flex'" />
+    <p>{{ picture.explanation }}</p>
   </v-card>
 </template>
 
@@ -78,9 +77,3 @@ function addToFavorites() {
 
 onMounted(fetchPictureOfTheDay)
 </script>
-
-<style scoped>
-.date-picker {
-  width: 200px;
-}
-</style>

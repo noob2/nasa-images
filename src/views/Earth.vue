@@ -61,7 +61,3 @@ function onImageLoaded() {
   attachPanZoom()
 }
 </script>
-
-<style>
-/* Add any custom styles here */
-</style>

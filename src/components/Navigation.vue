@@ -21,7 +21,7 @@
     </v-navigation-drawer>
   </div>
 
-  <v-tabs color="green" align-tabs="center" class="responsive-tabs" centered>
+  <v-tabs color="green" align-tabs="center" class="responsive-tabs" centered bg-color="teal-darken-4">
     <v-spacer />
     <v-tab v-for="(item, index) in menuItems" :key="index" :to="item.path">
       {{ item.label }}
@@ -51,7 +51,7 @@ const menuItems = [
   { label: 'Epic Earth', path: '/epic-earth' }
 ]
 
-const isLoggedIn = computed(() => store.state.isLoggedIn) // Replace with your logic to check if the user is logged in
+const isLoggedIn = computed(() => store.state.isLoggedIn)
 
 function handleResize() {
   showMenu.value = window.innerWidth >= 600
@@ -59,7 +59,7 @@ function handleResize() {
 
 onMounted(() => {
   window.addEventListener('resize', handleResize)
-  handleResize() // Call the handler initially
+  handleResize()
 })
 
 onBeforeUnmount(() => {
@@ -68,17 +68,15 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-/* CSS for small screens (less than 600px) */
 @media (max-width: 800px) {
   .responsive-tabs {
-    display: none; /* Hide the tabs */
+    display: none;
   }
 }
 
-/* CSS for larger screens (greater than or equal to 600px) */
 @media (min-width: 800px) {
   .responsive-menu {
-    display: none; /* Hide the menu */
+    display: none;
   }
 }
 </style>
