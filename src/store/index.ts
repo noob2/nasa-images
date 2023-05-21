@@ -40,6 +40,7 @@ const store = createStore<State>({
   },
   getters: {
     isImageInFavorites: (state: State) => (imageUrl: string) => {
+      //TODO: get this from the database
       return state.favorites.some((f: any) => f.url === imageUrl)
     }
   }
