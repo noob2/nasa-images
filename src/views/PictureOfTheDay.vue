@@ -16,7 +16,7 @@
       {{ picture.title }}
       <v-btn v-if="isLoggedIn" @click="addToFavorites" icon="fa-heart" :color="picture.isLiked ? 'purple' : 'white'" size="x-small" />
     </h2>
-    <img :src="picture.url" :alt="picture.title" class="pa-2" style="max-width: 850px; max-height: 850px; display: 'inline-flex'" />
+    <img :src="picture.url" :alt="picture.title" class="pa-2" id="image" />
     <p>{{ picture.explanation }}</p>
   </v-card>
 </template>
@@ -78,3 +78,17 @@ function addToFavorites() {
 
 onMounted(fetchPictureOfTheDay)
 </script>
+
+<style scoped>
+#image {
+  max-width: 850px;
+  max-height: 850px;
+  display: 'inline-flex';
+}
+
+@media (max-width: 850px) {
+  #image {
+    max-width: 100%;
+  }
+}
+</style>
