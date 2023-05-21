@@ -19,9 +19,9 @@ import vue3GoogleLogin from 'vue3-google-login'
 
 const app = createApp(App)
 
-app.use(vue3GoogleLogin, {
-  clientId: '640554484662-495271nmjamr51ovaaj5e5egdldet4r9.apps.googleusercontent.com'
-})
+const clientId = process.env.VUE_APP_GOOGLE_CLIENT_ID
+
+app.use(vue3GoogleLogin, { clientId })
 
 app.component('font-awesome-icon', FontAwesomeIcon) // Register component globally
 library.add(fas)
