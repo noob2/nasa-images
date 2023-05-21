@@ -6,10 +6,12 @@ interface State {
   favorites: any[]
 }
 
+const apiKey = process.env.VUE_APP_NASA_API_KEY || ''
+
 const store = createStore<State>({
   state(): State {
     return {
-      apiKey: 'Ifx2A2SLuQfJ5Ytee6dPkQDjyP7etZMWqgRFPvan',
+      apiKey,
       isLoggedIn: false,
       favorites: []
     }
