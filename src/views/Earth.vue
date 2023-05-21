@@ -1,5 +1,5 @@
 <template>
-  <v-card variant="outlined" class="ma-1" :loading="isLoading" min-height="20">
+  <v-card variant="outlined" class="ma-1" :loading="isLoading" min-height="20" max-height="90vh">
     <v-img :src="earthImageUrl" alt="Earth Image" id="panzoom-element" @load="onImageLoaded" />
   </v-card>
 </template>
